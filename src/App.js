@@ -1,24 +1,52 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import Home from "./pages/Home"
 import './App.css';
+import Basket from './pages/Basket';
+import CardAdd from './pages/CardAdd';
+import { ContextItem } from './context/ContextItem';
 
 function App() {
+
+  const [addItem, setAddItem] = useState([]);
+
+
+  const productItem = {
+    addItem,
+    setAddItem
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContextItem.Provider value={productItem}>
+    <BrowserRouter>
+      <div>
+        <nav className="navbar navbar-expand-lg bg-light">
+          <div className="container-fluid">
+            <strong>E-Commerce</strong>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <NavLink className="nav-link active" ariaCurrent="page" to="/">Home</NavLink>
+                </li>
+                <li className="nav-item">
+                <NavLink className="nav-link active" ariaCurrent="page" to="/cardekle">Kart ekle</NavLink>
+                </li>
+                <li className="nav-item">
+                <NavLink className="nav-link active" ariaCurrent="page" to="/sepetim">Sepetim</NavLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path='/cardekle' element={<CardAdd />} />
+            <Route path='/sepetim' element={<Basket />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
+    </ContextItem.Provider>
   );
 }
 
