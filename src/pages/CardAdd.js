@@ -23,7 +23,7 @@ function CardAdd() {
     db.collection("products").add({
       name: name,
       price: price,
-      size, size,
+      size: size,
       image1: image1,
       image2: image2,
       image3: image3,

@@ -9,9 +9,12 @@ import { ContextItem } from './context/ContextItem';
 function App() {
 
   const [addItem, setAddItem] = useState([]);
+  const [ifAdd, setIfAdd] = useState(false);
 
 
   const productItem = {
+    ifAdd,
+    setIfAdd,
     addItem,
     setAddItem
   }
@@ -25,13 +28,13 @@ function App() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <NavLink className="nav-link active" ariaCurrent="page" to="/">Home</NavLink>
+                  <a className="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                <NavLink className="nav-link active" ariaCurrent="page" to="/cardekle">Kart ekle</NavLink>
+                <NavLink className="nav-link active" aria-current="page" to="/cardekle">Kart ekle</NavLink>
                 </li>
                 <li className="nav-item">
-                <NavLink className="nav-link active" ariaCurrent="page" to="/sepetim">Sepetim</NavLink>
+                <NavLink className="nav-link active" aria-current="page" to="/sepetim">Sepetim</NavLink>
                 </li>
               </ul>
             </div>

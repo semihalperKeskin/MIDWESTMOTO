@@ -6,22 +6,13 @@ import "./index.css"
 function Home() {
 
   const [info, setInfo] = useState([]);
-  const { addItem, setAddItem } = useContext(ContextItem);
-  const [selectItem, setSelectItem] = useState([]);
-
-  useEffect(() => {
-    window.addEventListener('load', () => {
-      Fetchdata();
-    });
-  })
+  const { addItem, setAddItem, setIfAdd } = useContext(ContextItem);
 
 
-  // Start the fetch operation as soon as
-  // the page loads
+
   window.addEventListener('load', () => {
     Fetchdata();
   });
-  console.log(addItem)
   // Fetch the required data using the get() method
   const Fetchdata = () => {
     db.collection("products").get().then((querySnapshot) => {
@@ -35,19 +26,26 @@ function Home() {
       });
     })
   }
-  const findId = (items) => {
-    console.log(items)
 
-      for(let i = 0; i < info.length; i++){
-        if(i === items)
-        {
-          setAddItem(arr => [...arr, info[i-1]]);
-        }
-      }
-      console.log(addItem)
+
+
+  const findId = (items) => {
+    const itemFind = addItem.find(item => item.id === items)
+    if (itemFind) {
+      itemFind.quantity += 1;
+    }
+    else {
+      const addItemFind = info.find(item => item.id === items)
+          addItemFind.quantity += 1;
+          setAddItem(arr => [...arr, addItemFind]);
+          setIfAdd(true);
+          console.log(addItemFind)
+    }
+
+
   }
 
- 
+
 
   // Display the result on the page
   return (
@@ -88,10 +86,9 @@ function Home() {
             </div>
             <div className="card-body">
               <h5 className="card-title">{data.name}</h5>
-              <a onClick={() => findId(data.id)} className="btn btn-primary">Sepete ekle</a>
+              <a onClick={() => findId(data.id)} className="btn btn-primary" >Sepete ekle</a>
             </div>
           </div>
-
         ))
       }
     </>
