@@ -5,18 +5,21 @@ import './App.css';
 import Basket from './pages/Basket';
 import CardAdd from './pages/CardAdd';
 import { ContextItem } from './context/ContextItem';
+import db from './firebase';
 
 function App() {
 
   const [addItem, setAddItem] = useState([]);
   const [ifAdd, setIfAdd] = useState(false);
-
+  const [info, setInfo] = useState([]);
 
   const productItem = {
     ifAdd,
     setIfAdd,
     addItem,
-    setAddItem
+    setAddItem,
+    info,
+    setInfo
   }
   return (
     <ContextItem.Provider value={productItem}>
@@ -28,7 +31,7 @@ function App() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">Home</a>
+                  <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
                 </li>
                 <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/cardekle">Kart ekle</NavLink>

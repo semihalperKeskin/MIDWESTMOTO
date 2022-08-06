@@ -1,42 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export default function ButtonGroup({data}) {
+export default function ButtonGroup({ data }) {
 
-    const decrease = (data) => {
-        if(data.quantity === 1)
-        {
-          return data.quantity
-        }
-        else{
-          return data.quantity -= 1;
-        }
-      }
-    
-       const increase = (data) => {
-        if(data.quantity === 10)
-        {
-          return data.quantity
-        }
-        else{
-          return data.quantity += 1;
-        }
-      }
-    const itemAmount = (data) => {
 
-        if(data === 0)
-        return data = 1;
-        else
-        return data
-      }
-  return (
-    <div className="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" onClick={() => decrease(data)} className="btn btn-quantity">-</button>
-                  <button type="button" className="btn btn-light">
-                  {
-                    itemAmount(data.quantity)
-                  }
-                </button>
-                  <button type="button" onClick={() => increase(data)} className="btn btn-quantity">+</button>
-                </div>
-  )
+    const decrease = (dquantity) => {
+        if (dquantity === 1) {
+            return dquantity
+        }
+        else {
+            return dquantity -= 1;
+        }
+    }
+
+    const increase = (dquantity) => {
+        if (dquantity === 10) {
+            return dquantity
+        }
+        else {
+            return dquantity += 1;
+        }
+    }
+    // const itemAmount = (data) => {
+
+    //     if (data === 0)
+    //         return data = 1;
+    //     else
+    //         return data
+    // }
+    return (
+        <div className="btn-group" role="group" aria-label="Basic example">
+            <button type="button" onClick={() => decrease(data.quantity)} className="btn btn-quantity">-</button>
+            <button type="button" className="btn btn-light">
+                {
+                    data.quantity
+                }
+            </button>
+            <button type="button" onClick={() => increase(data.quantity)} className="btn btn-quantity">+</button>
+        </div>
+    )
 }
