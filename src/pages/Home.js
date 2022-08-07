@@ -6,10 +6,10 @@ import "./index.css"
 
 function Home() {
 
-  const { addItem, setAddItem, setIfAdd,info,setInfo } = useContext(ContextItem);
+  const { setIfAdd,info,setInfo } = useContext(ContextItem);
 
   useEffect(()=> {
-    db.collection("products").onSnapshot(snapShot => setInfo(snapShot.docs.map (doc => ({
+    db.collection("products").orderBy("name").onSnapshot(snapShot => setInfo(snapShot.docs.map (doc => ({
       id: doc.id,
       data: doc.data()
     }))))
@@ -39,15 +39,8 @@ function Home() {
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-
           setIfAdd(true)
-          console.log(doc.data())
-          if (doc.data().quantity != 0) {
-            doc.ref.update({quantity: +1})
-          }
-          else {
-            doc.ref.update({quantity: 1})
-          }
+          doc.ref.update({quantity: doc.data().quantity +1})
           console.log("add : ",doc.data());
         });
     })
