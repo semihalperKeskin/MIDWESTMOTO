@@ -1,11 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import ButtonGroup from '../component/button-group';
 import { ContextItem } from '../context/ContextItem';
 import db from '../firebase';
 import "./index.css"
-
-
-window.localStorage.getItem("productList");
 
 function Basket() {
 

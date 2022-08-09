@@ -5,13 +5,14 @@ import './App.css';
 import Basket from './pages/Basket';
 import CardAdd from './pages/CardAdd';
 import { ContextItem } from './context/ContextItem';
-import db from './firebase';
+import DetailPage from './pages/DetailPage';
 
 function App() {
 
   const [addItem, setAddItem] = useState([]);
   const [ifAdd, setIfAdd] = useState(false);
   const [info, setInfo] = useState([]);
+  const [detailItem, setDetailItem] = useState([]);
 
   const productItem = {
     ifAdd,
@@ -19,7 +20,9 @@ function App() {
     addItem,
     setAddItem,
     info,
-    setInfo
+    setInfo,
+    detailItem,
+    setDetailItem
   }
   return (
     <ContextItem.Provider value={productItem}>
@@ -46,6 +49,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path='/product/:id' element={<DetailPage />} />
             <Route path='/cardekle' element={<CardAdd />} />
             <Route path='/sepetim' element={<Basket />} />
           </Routes>
