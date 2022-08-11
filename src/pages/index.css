@@ -18,3 +18,12 @@
 .btn-quantity:hover{
     background-color: rgb(155, 158, 160);
 }
+.categoryList {
+    list-style: none;
+    margin-top: 25px;
+}
+.categoryList li {
+    display: inline;
+    margin-right: 15px;
+    
+}

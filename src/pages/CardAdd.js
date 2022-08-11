@@ -22,6 +22,7 @@ function CardAdd() {
     // Add data to the store
     db.collection("products").add({
       name: name,
+      nameToUpper: name.toUpperCase(),
       price: price,
       size: size,
       image1: image1,

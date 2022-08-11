@@ -3,9 +3,14 @@ import { ContextItem } from '../context/ContextItem';
 import db from '../firebase';
 import "./index.css"
 
+
+
 function Basket() {
 
-  const { addItem, setAddItem, ifAdd } = useContext(ContextItem);
+  
+  
+
+  const { addItem, setAddItem } = useContext(ContextItem);
 
   const basketData = db.collection("products");
 
@@ -16,6 +21,7 @@ function Basket() {
     });
     return total.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
+
 
   useEffect(() => {
     basketData.where("quantity", ">", 0).orderBy("quantity","desc").onSnapshot(snapShot => {
@@ -167,7 +173,7 @@ function Basket() {
     <>
       {
 
-        ifAdd ?
+        addItem != 0 ?
           renderData() : <div>Henüz ürün eklenmedi.</div>
       }
     </>
