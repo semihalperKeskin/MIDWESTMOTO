@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { register } from '../firebase'
 
+
 function Register() {
+
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   
@@ -11,8 +13,6 @@ function Register() {
   const handleSubmit = async e => {
     e.preventDefault()
     const user = await register(email, password)
-
-
   }
   
   return (
@@ -28,8 +28,8 @@ function Register() {
           <input type="password" className="form-control" value={password} id="exampleInputPassword1" onChange={e => setPassword(e.target.value)} placeholder="Şifre giriniz."/>
         </div>
         <button type="submit" disabled={!email || !password} className="btn btn-primary">Kayıt Ol</button>
+        
       </form>
-
     </>
   )
 }

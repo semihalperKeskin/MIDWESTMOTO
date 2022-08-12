@@ -91,6 +91,7 @@ function Home() {
                 <Link className="btn" onClick={() => setDetailItem(item.data)} to={`/product/${item.data.id}`}>
                   Ürün detayları
                 </Link>
+                <p>Fiyat : {item.data.price} ₺</p>
               </div>
             </div>
           </>

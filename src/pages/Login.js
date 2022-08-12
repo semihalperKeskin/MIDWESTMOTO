@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../firebase'
+import { login as loginHandle } from '../store/auth';
+import Header from "../component/Header"
 
 
 
 function Login() {
+
+  const dispatch = useDispatch()
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const navigate = useNavigate();
@@ -13,8 +18,10 @@ function Login() {
   const handleSubmit = async e => {
     e.preventDefault()
     const user = await loginUser(email, password)
-    console.log(user)
-    navigate("/")
+    if(user){
+      dispatch(loginHandle(email))
+    navigate("/", {replace: true})
+    }
   }
 
   return (
@@ -31,7 +38,6 @@ function Login() {
         </div>
         <button type="submit" disabled={!email || !password} className="btn btn-primary">Giriş yap</button>
       </form>
-
     </>
   )
 }

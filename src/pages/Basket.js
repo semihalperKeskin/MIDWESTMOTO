@@ -156,7 +156,7 @@ function Basket() {
                 </button>
                 <button type="button" onClick={() => increase(item.data)} className="btn btn-quantity">+</button>
                 <button onClick={()=> delItem(item.data)}>Delete</button>
-                <p>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</p>
+                <p>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
               </div>
             </div>
           </div>

@@ -8,6 +8,7 @@ import { ContextItem } from './context/ContextItem';
 import DetailPage from './pages/DetailPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Header from './component/Header';
 
 function App() {
 
@@ -16,6 +17,9 @@ function App() {
   const [ifAdd, setIfAdd] = useState(false);
   const [info, setInfo] = useState([]);
   const [detailItem, setDetailItem] = useState([]);
+  const [loginControl, setLoginControl] = useState(false);
+
+ 
 
 
   const productItem = {
@@ -26,37 +30,13 @@ function App() {
     info,
     setInfo,
     detailItem,
-    setDetailItem
+    setDetailItem,
+    loginControl,
+    setLoginControl
   }
   return (
     <ContextItem.Provider value={productItem}>
-      <BrowserRouter>
-        <nav className="navbar navbar-expand-lg bg-light">
-          <div className="container-fluid container">
-            Navbar
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">Home</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/cardekle">Kart ekle</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/sepetim">
-                  sepetim
-                  </Link>
-                </li>
-              </ul>
-              <li className="d-flex nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
-              </li>
-              <li className="d-flex nav-item">
-                <Link className="nav-link" to="/register">Register</Link>
-              </li>
-            </div>
-          </div>
-        </nav>
+          <Header/>
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -67,7 +47,6 @@ function App() {
             <Route path='/sepetim' element={<Basket />} />
           </Routes>
         </div>
-      </BrowserRouter>
     </ContextItem.Provider>
   );
 }

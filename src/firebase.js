@@ -1,5 +1,7 @@
 import firebase from "firebase";
 import "firebase/auth"
+import { useNavigate } from "react-router-dom";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBGJ5L6VXnzucBDqERu5ZZkzpFD4nK7ODI",
@@ -19,16 +21,8 @@ export const auth = firebase.auth();
 
 export const loginUser = async (email, password) => {
   try{
-  await auth.signInWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-  });
+  const { user } = await auth.signInWithEmailAndPassword(email, password)
+    return user
 } catch(err){
   console.log(err)
 }
@@ -41,6 +35,14 @@ export const register = async (email, password) => {
 } catch(err){
   console.log(err)
 }
+}
+
+export const loginOut = () => {
+  auth.signOut().then(() => {
+    return true
+  }).catch((error) => {
+    console.log(error)
+  });
 }
 
 export default db;
