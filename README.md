@@ -16,7 +16,7 @@ Live : [MIDWEST MOTO](https://midwestmoto.netlify.app)
 <h3> if you want to clone repo you can write this in terminal</h3>
 
 ````
-git clone https://github.com/semihalperKeskin/eCommerce-project.git
+git clone https://github.com/semihalperKeskin/MIDWESTMOTO.git
 npm i
 npm i firebase@8
 npm i react-router-dom
