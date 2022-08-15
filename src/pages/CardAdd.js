@@ -132,6 +132,7 @@ function CardAdd() {
   return (
     <div>
       <center>
+        <div className='card-add-div'>
         <div className='uploadForm'>
           <label className='imageUpload' for="img1"> Resim 1 : </label>
           <input className='inputUpload' type="file" id='img1' placeholder="image1" onChange={(e) => { setImage1(e.target.files[0]) }}
@@ -150,9 +151,8 @@ function CardAdd() {
           />
           <button onClick={() => image3Upload()}>Upload</button>
         </div>
-        <br />
-        <br /><br /><br /><br />
-        <form className='card-add' style={{ marginTop: "200px" }}
+
+        <form className='card-add'
           onSubmit={(event) => { sub(event) }}>
 
           <label for="img3"> Katagori : </label>
@@ -198,6 +198,7 @@ function CardAdd() {
 
           <button type="submit">Kaydet</button>
         </form>
+        </div>
       </center>
     </div>
   )

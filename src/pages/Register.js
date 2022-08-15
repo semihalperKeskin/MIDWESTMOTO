@@ -8,15 +8,14 @@ function Register() {
 
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
- 
+
 
   const handleSubmit = async e => {
     e.preventDefault()
     const user = await register(email, password)
-    
   }
 
-  
+
   return (
     <>
       <center>
