@@ -32,6 +32,10 @@ npm i react-hot-toast
 
 ---
 
+- ### Product Detail page
+![](screenshot/detail-product.jpg)
+
+---
 - ### Card add page
 
 #### firstly you choise image and then press upload button then you can write other detail your product
