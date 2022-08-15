@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import db, { storage, storageRef } from '../firebase';
+import toast from "react-hot-toast"
 import "./CardAdd.css"
 
 function CardAdd() {
@@ -16,10 +17,11 @@ function CardAdd() {
   const [image3Url, setImage3Url] = useState(null);
   const [description, setDescription] = useState("");
 
-  console.log(category)
+  const quantity= 0;
+
+
   const onChangeValue = (e) => {
     setCategory(e.target.value)
-    
   }
 
   const image1Upload = () => {
@@ -32,7 +34,7 @@ function CardAdd() {
         );
       },
       error => {
-        console.log(error);
+        toast.error(error.message)
       },
       () => {
         storage
@@ -57,7 +59,7 @@ function CardAdd() {
         );
       },
       error => {
-        console.log(error);
+        toast.error(error.message)
       },
       () => {
         storage
@@ -80,7 +82,7 @@ function CardAdd() {
         );
       },
       error => {
-        console.log(error);
+        toast.error(error.message)
       },
       () => {
         storage
@@ -93,12 +95,9 @@ function CardAdd() {
       }
     );
   }
-  console.log(image1Url)
 
   const sub = (e) => {
     e.preventDefault();
-    
-
 
 
     // Add data to the store
@@ -111,7 +110,8 @@ function CardAdd() {
       image1: image1Url,
       image2: image2Url,
       image3: image3Url,
-      description: description
+      description: description,
+      quantity: quantity
 
     })
       .then((doc) => {
@@ -119,43 +119,45 @@ function CardAdd() {
 
       })
       .catch((error) => {
-        console.error("not okey: ", error);
+        toast.error(error.message)
       });
-      setName("")
-      setPrice("")
-      setSize("")
-      setImage1(null)
-      setImage2(null)
-      setImage3(null)
-      setDescription("")
-    }
+    setName("")
+    setPrice("")
+    setSize("")
+    setImage1(null)
+    setImage2(null)
+    setImage3(null)
+    setDescription("")
+  }
   return (
     <div>
       <center>
-          
-      <label for="img1"> Resim 1 : </label>
-          <input className='input' type="file"  id='img1' placeholder="image1" onChange={(e) => { setImage1(e.target.files[0]) }}
-             />
-            <button onClick={()=> image1Upload()}>Upload</button>
+        <div className='uploadForm'>
+          <label className='imageUpload' for="img1"> Resim 1 : </label>
+          <input className='inputUpload' type="file" id='img1' placeholder="image1" onChange={(e) => { setImage1(e.target.files[0]) }}
+          />
+          <button onClick={() => image1Upload()}>Upload</button>
           <br />
 
-          <label for="img2"> Resim 2 : </label>
-          <input className='input' type="file" id="img2" placeholder="image2" onChange={(e) => { setImage2(e.target.files[0]) }}
-             />
-            <button onClick={()=> image2Upload()}>Upload</button>
+          <label className='imageUpload' for="img2"> Resim 2 : </label>
+          <input className='inputUpload' type="file" id="img2" placeholder="image2" onChange={(e) => { setImage2(e.target.files[0]) }}
+          />
+          <button onClick={() => image2Upload()}>Upload</button>
           <br />
 
-          <label for="img3"> Resim 3 : </label>
-          <input className='input' type="file" id='img3' placeholder="image3" onChange={(e) => { setImage3(e.target.files[0]) }}
-             />
-            <button onClick={()=> image3Upload()}>Upload</button>
-          <br />
+          <label className='imageUpload' for="img3"> Resim 3 : </label>
+          <input className='inputUpload' type="file" id='img3' placeholder="image3" onChange={(e) => { setImage3(e.target.files[0]) }}
+          />
+          <button onClick={() => image3Upload()}>Upload</button>
+        </div>
+        <br />
+        <br /><br /><br /><br />
         <form className='card-add' style={{ marginTop: "200px" }}
           onSubmit={(event) => { sub(event) }}>
-          
+
           <label for="img3"> Katagori : </label>
           <div class="form-check" >
-            <input type="radio" name="flexRadioDefault" value="mont" id="flexRadioDefault1" onChange={onChangeValue}  />
+            <input type="radio" name="flexRadioDefault" value="mont" id="flexRadioDefault1" onChange={onChangeValue} />
             <label class="form-check-label" for="flexRadioDefault1">
               Mont
             </label>
@@ -190,7 +192,7 @@ function CardAdd() {
           <br />
 
           <label for="description"> Ürün açıklaması : </label>
-          <input className='input' style={{ resize: "none" }} maxlength="500"  value={description} type="text" rows="10" cols="100" id='description' placeholder="Ürün açıklaması giriniz. Max: 500"
+          <input className='input' style={{ resize: "none" }} maxlength="500" value={description} type="text" rows="10" cols="100" id='description' placeholder="Ürün açıklaması giriniz. Max: 500"
             onChange={(e) => { setDescription(e.target.value) }} />
           <br />
 

@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import "firebase/auth"
-import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast"
 
 
 const firebaseConfig = {
@@ -25,16 +25,16 @@ export const loginUser = async (email, password) => {
   const { user } = await auth.signInWithEmailAndPassword(email, password)
     return user
 } catch(err){
-  console.log(err)
+  toast.error(err.message)
 }
 }
 
 export const register = async (email, password) => {
   try{
-  const { user } = await auth.createUserWithEmailAndPassword(email, password)
+  const { user } = await auth.createUserWithEmailAndPassword(email, password).then(res => toast.success("Kayıt işlemi başarılı.") )
   return user;
 } catch(err){
-  console.log(err)
+  toast.error(err.message)
 }
 }
 
@@ -42,7 +42,7 @@ export const loginOut = () => {
   auth.signOut().then(() => {
     return true
   }).catch((error) => {
-    console.log(error)
+    toast.error(error.message)
   });
 }
 

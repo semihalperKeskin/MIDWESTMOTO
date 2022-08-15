@@ -1,5 +1,6 @@
 .card-add{
     text-align: start;
+    margin-top: 0;
 }
 .card-add label{
     margin-top: 25px;
@@ -56,4 +57,32 @@
     margin: 0;
     opacity: 1;
     transition: 0s
+}
+.uploadForm {
+  
+    display: inline;
+    position: absolute;
+    left: 11%;
+    width: 50%;
+    border-radius: 15px;
+    padding: 100px;
+}
+.uploadForm label{
+    width: 30%;
+    margin-right: 55px;
+    display: inline-block;
+    font-size: 25px;
+    margin-top: 15px;
+
+}
+.uploadForm .inputUpload{
+    width: 25rem;
+    margin-top: 10px;
+}
+.uploadForm button  {
+    border-radius: 15px;
+    background-color: transparent;
+    border-color: orange;
+    width: 80px;
+    height: 35px;
 }

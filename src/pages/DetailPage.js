@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import AddBasket from '../component/AddBasket';
 import { ContextItem } from '../context/ContextItem';
-import db from '../firebase';
 import "./DetailPage.css"
 
 function DetailPage() {
 
   const { detailItem } = useContext(ContextItem);
-  console.log("detailItem : ",detailItem)
 
 
   return (
@@ -48,7 +46,7 @@ function DetailPage() {
           <p>Mevcut bedenler : {detailItem.size}</p>
           <p>Fiyat : {detailItem.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
           <AddBasket item={detailItem}/>
-          <p><u>Ürün Detayları </u><p >{detailItem.description}</p></p>
+          <p style={{marginTop: "15px"}}><u>Ürün Detayları : </u><p style={{marginTop: "10px"}} >{detailItem.description}</p></p>
           
         </div>
         </div>

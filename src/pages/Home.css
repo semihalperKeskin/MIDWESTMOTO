@@ -6,7 +6,12 @@
     width: 18%;
 
 }
-.card-body{
+
+.carousel-home {
+    height: 250px;
+}
+
+.card-body {
     padding-bottom: 0;
 }
 
@@ -23,53 +28,60 @@
 }
 
 
-.card-body .btn-warning{
+.card-body .btn-warning {
     display: block;
     width: auto;
     position: relative;
-    -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  text-decoration: none;
-  overflow: hidden;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
 }
-.card-body .btn-warning:hover{
+
+.card-body .btn-warning:hover {
     display: block;
     width: auto;
 }
-.card-body .btn-warning::after{
+
+.card-body .btn-warning::after {
     content: "";
     background: yellow;
     display: block;
     position: absolute;
     padding-top: 300%;
     padding-left: 350%;
-    margin-left: -20px!important;
+    margin-left: -20px !important;
     margin-top: -120%;
     opacity: 0;
     transition: all 0.8s
 }
+
 .card-body .btn-warning:active:after {
     padding: 0;
     margin: 0;
     opacity: 1;
     transition: 0s
-  }
-.card-body .btn-detail{
+}
+
+.card-body .btn-detail {
     display: block;
 }
+
 .card-body p {
     margin-top: 5px;
     margin-bottom: 0;
-    text-align: right;
+    text-align: center;
 }
 
 .search-box {
     margin-top: 30px;
     text-align: start;
-    width: 40%;    
+    width: 40%;
     border: 1px solid black;
     background-color: white;
     border-radius: 25px;
+
 }
 
 .search-box input {
@@ -78,8 +90,10 @@
     width: 90%;
     height: 45px;
     padding: 15px;
+    outline: none;
 }
-.search-box i{
+
+.search-box i {
     position: absolute;
     margin-left: 15px;
     margin-top: 15px;

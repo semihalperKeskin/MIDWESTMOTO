@@ -4,12 +4,11 @@ import db from '../firebase';
 function AddBasket(item) {
     
     const findId = (items) => {
-        db.collection("products").where("id", "==", items.id)
+        db.collection("products").where("name", "==", items.name)
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     doc.ref.update({ quantity: doc.data().quantity + 1 })
-                    console.log("add : ", doc.data());
                 });
             })
     }

@@ -9,17 +9,18 @@ import DetailPage from './pages/DetailPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Header from './component/Header';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
- 
+
   const [addItem, setAddItem] = useState([]);
   const [ifAdd, setIfAdd] = useState(false);
   const [info, setInfo] = useState([]);
   const [detailItem, setDetailItem] = useState([]);
   const [loginControl, setLoginControl] = useState(false);
 
- 
+
 
 
   const productItem = {
@@ -37,17 +38,18 @@ function App() {
   }
   return (
     <ContextItem.Provider value={productItem}>
-          <Header/>
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/product/:id' element={<DetailPage />} />
-            <Route path='/cardekle' element={<CardAdd />} />
-            <Route path='/sepetim' element={<Basket />} />
-          </Routes>
-        </div>
+      <Toaster position='top-right'/>
+      <Header />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/product/:id' element={<DetailPage />} />
+          <Route path='/cardekle' element={<CardAdd />} />
+          <Route path='/sepetim' element={<Basket />} />
+        </Routes>
+      </div>
     </ContextItem.Provider>
   );
 }

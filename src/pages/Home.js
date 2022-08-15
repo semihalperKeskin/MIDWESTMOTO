@@ -30,27 +30,21 @@ function Home() {
   }, [search])
 
 
-
-
-
-
-
-
   return (
     <>
-    <center>
-      <form className='search-box'>
-        <input onChange={(e) => setSearch(e.target.value)} type="search" placeholder="Ürün Ara" aria-label="Search" />
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </form>
+      <center>
+        <form className='search-box'>
+          <input onChange={(e) => setSearch(e.target.value)} type="search" placeholder="Ürün Ara" aria-label="Search" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </form>
       </center>
-      <CategoryFilter/>
-      <DropdownFilter/>
+      <CategoryFilter />
+      <DropdownFilter />
       {
         info.map((item, i) => (
           <>
             <div className="card col-2" key={i}>
-              <div id={`carouselExampleIndicators${i}`} className="carousel slide" data-bs-ride="true">
+              <div id={`carouselExampleIndicators${i}`} className="carousel carousel-home slide" data-bs-ride="true">
                 <div className="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" ><img src={item.data.image1} className="d-block w-100" alt="..." /></button>
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" >

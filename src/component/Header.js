@@ -14,7 +14,7 @@ function Header() {
   const { user } = useSelector(state => state.auth)
   const navigate = useNavigate();
 
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     await loginOut();
     dispatch(logoutHandle())
     navigate("/login")
@@ -23,33 +23,33 @@ function Header() {
 
   return (
     <nav className="navbar navbar-expand-lg">
-    <div className="container-fluid container">
-    <p className='logo'>Midwest Moto</p>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav me-auto mb-1 mb-lg-0">
-          <li className="nav-item">
-            <Link className=" nav-p" to="/">Home</Link>
-          </li>
-          <li className="nav-item">
-            <Link className=" nav-p" to="/cardekle">Kart ekle</Link>
-          </li>
-          <li className="nav-item">
-            <Link className=" nav-p" to="/sepetim">
-            Sepetim
-            </Link>
-          </li>
-        </ul>
-        {user && <li className="d-flex nav-item nav-welcome">{user}</li > }
-        {user && <li className="d-flex nav-link btn-user" onClick={()=> handleLogout()}>Çıkış yap</li>}
+      <div className="container-fluid container">
+        <p className='logo'>Midwest Moto</p>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-1 mb-lg-0">
+            <li className="nav-item">
+              <Link className=" nav-p" to="/">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className=" nav-p" to="/cardekle">Kart ekle</Link>
+            </li>
+            <li className="nav-item">
+              <Link className=" nav-p" to="/sepetim">
+                Sepetim
+              </Link>
+            </li>
+          </ul>
+          {user && <li className="d-flex nav-item nav-welcome">{user}</li >}
+          {user && <li className="d-flex nav-link btn-user" onClick={() => handleLogout()}>Çıkış yap</li>}
           {!user && <li className="d-flex nav-item">
-          <Link className="nav-link btn-user " to="/login">Login</Link>
-        </li> }
-        {!user && <li className="d-flex nav-item">
-          <Link className="nav-link btn-user" to="/register">Register</Link>
-        </li> }
+            <Link className="nav-link btn-user " to="/login">Login</Link>
+          </li>}
+          {!user && <li className="d-flex nav-item">
+            <Link className="nav-link btn-user" to="/register">Register</Link>
+          </li>}
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
   )
 }
 
