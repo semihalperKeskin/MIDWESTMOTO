@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import db, { storageRef } from '../firebase';
+import db, { storage, storageRef } from '../firebase';
 import "./CardAdd.css"
 
 function CardAdd() {
@@ -10,6 +10,10 @@ function CardAdd() {
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
+
+  const [image1Url, setImage1Url] = useState(null);
+  const [image2Url, setImage2Url] = useState(null);
+  const [image3Url, setImage3Url] = useState(null);
   const [description, setDescription] = useState("");
 
   console.log(category)
@@ -18,8 +22,84 @@ function CardAdd() {
     
   }
 
+  const image1Upload = () => {
+    const uploadTask = storage.ref(`images/${image1.name}`).put(image1);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image1.name)
+          .getDownloadURL()
+          .then(url => {
+            setImage1Url(url);
+          });
+      }
+    );
+  }
+
+
+  const image2Upload = () => {
+    const uploadTask = storage.ref(`images/${image2.name}`).put(image2);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image2.name)
+          .getDownloadURL()
+          .then(url => {
+            setImage2Url(url);
+          });
+      }
+    );
+  }
+  const image3Upload = () => {
+    const uploadTask = storage.ref(`images/${image3.name}`).put(image3);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image3.name)
+          .getDownloadURL()
+          .then(url => {
+            setImage3Url(url);
+          });
+      }
+    );
+  }
+  console.log(image1Url)
+
   const sub = (e) => {
     e.preventDefault();
+    
+
+
 
     // Add data to the store
     db.collection("products").add({
@@ -28,9 +108,9 @@ function CardAdd() {
       nameToUpper: name.toUpperCase(),
       price: price,
       size: size,
-      image1: image1,
-      image2: image1,
-      image3: image1,
+      image1: image1Url,
+      image2: image2Url,
+      image3: image3Url,
       description: description
 
     })
@@ -52,22 +132,27 @@ function CardAdd() {
   return (
     <div>
       <center>
-        <form className='card-add' style={{ marginTop: "200px" }}
-          onSubmit={(event) => { sub(event) }}>
-          <label for="img1"> Resim 1 : </label>
-          <input className='input' type="file" id='img1' placeholder="image1"
-            onChange={(e) => { setImage1(e.target.files[0]) }} />
+          
+      <label for="img1"> Resim 1 : </label>
+          <input className='input' type="file"  id='img1' placeholder="image1" onChange={(e) => { setImage1(e.target.files[0]) }}
+             />
+            <button onClick={()=> image1Upload()}>Upload</button>
           <br />
 
           <label for="img2"> Resim 2 : </label>
-          <input className='input' type="file" id="img2" placeholder="image2"
-            onChange={(e) => { setImage2(e.target.files[0]) }} />
+          <input className='input' type="file" id="img2" placeholder="image2" onChange={(e) => { setImage2(e.target.files[0]) }}
+             />
+            <button onClick={()=> image2Upload()}>Upload</button>
           <br />
 
           <label for="img3"> Resim 3 : </label>
-          <input className='input' type="file" id='img3' placeholder="image3"
-            onChange={(e) => { setImage3(e.target.files[0]) }} />
+          <input className='input' type="file" id='img3' placeholder="image3" onChange={(e) => { setImage3(e.target.files[0]) }}
+             />
+            <button onClick={()=> image3Upload()}>Upload</button>
           <br />
+        <form className='card-add' style={{ marginTop: "200px" }}
+          onSubmit={(event) => { sub(event) }}>
+          
           <label for="img3"> Katagori : </label>
           <div class="form-check" >
             <input type="radio" name="flexRadioDefault" value="mont" id="flexRadioDefault1" onChange={onChangeValue}  />

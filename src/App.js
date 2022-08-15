@@ -33,6 +33,7 @@ function App() {
     setDetailItem,
     loginControl,
     setLoginControl
+
   }
   return (
     <ContextItem.Provider value={productItem}>
