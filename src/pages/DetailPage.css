@@ -1,0 +1,21 @@
+.detaildiv{
+    margin-top: 25px;
+    padding: 52px;
+    border-radius: 15px;
+    border: 2px solid orangered;
+    position: relative;
+    display: flex;
+}
+.carousel-detail{
+    width: 60%;
+}
+.product-detail{
+    position: static;
+    width: 70%;
+    text-align: left;
+    margin-left: 25px;
+}
+.product-detail p {
+    margin-bottom: 40px;
+    font-size: 20px;
+}

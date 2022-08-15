@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ContextItem } from '../context/ContextItem';
 import db from '../firebase';
 import { Link } from "react-router-dom"
-import "./index.css"
+import "./Home.css"
 import CategoryFilter from '../component/CategoryFilter';
 import DropdownFilter from '../component/DropdownFilter';
+import AddBasket from '../component/AddBasket';
 
 function Home() {
 
@@ -15,7 +16,7 @@ function Home() {
 
   useEffect(() => {
     if (search.length == 0) {
-      fetchData.orderBy("name").onSnapshot(snapShot => setInfo(snapShot.docs.map(doc => ({
+      fetchData.onSnapshot(snapShot => setInfo(snapShot.docs.map(doc => ({
         id: doc.id,
         data: doc.data()
       }))))
@@ -30,27 +31,21 @@ function Home() {
 
 
 
-  const findId = (items) => {
-    db.collection("products").where("id", "==", items)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          doc.ref.update({ quantity: doc.data().quantity + 1 })
-          console.log("add : ", doc.data());
-        });
-      })
-  }
+
 
 
 
 
   return (
     <>
-      <form>
-        <input onChange={(e) => setSearch(e.target.value)} type="search" placeholder="Search" aria-label="Search" />
+    <center>
+      <form className='search-box'>
+        <input onChange={(e) => setSearch(e.target.value)} type="search" placeholder="Ürün Ara" aria-label="Search" />
+        <i class="fa-solid fa-magnifying-glass"></i>
       </form>
-     <CategoryFilter/>
-     <DropdownFilter/>
+      </center>
+      <CategoryFilter/>
+      <DropdownFilter/>
       {
         info.map((item, i) => (
           <>
@@ -87,11 +82,11 @@ function Home() {
               </div>
               <div className="card-body">
                 <h5 className="card-title">{item.data.name}</h5>
-                <a onClick={() => findId(item.data.id)} className="btn btn-primary" >Sepete ekle</a>
-                <Link className="btn" onClick={() => setDetailItem(item.data)} to={`/product/${item.data.id}`}>
+                <AddBasket item={item.data} />
+                <Link className="btn btn-detail" onClick={() => setDetailItem(item.data)} to={`/product/${item.data.id}`}>
                   Ürün detayları
                 </Link>
-                <p>Fiyat : {item.data.price} ₺</p>
+                <p className='text-muted'>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
               </div>
             </div>
           </>

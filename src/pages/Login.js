@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../firebase'
 import { login as loginHandle } from '../store/auth';
-import Header from "../component/Header"
+import "./Login.css"
 
 
 
@@ -26,18 +26,20 @@ function Login() {
 
   return (
     <>
-    <div>Giriş yapmak için :  </div>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label" >Email</label>
+    <center>
+      <form className='login-form' onSubmit={handleSubmit}>
+        <div className="mb-3 login-email">
+          <label for="exampleInputEmail1" className="form-label login-label" >E-Posta</label>
           <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"value={email} onChange={e => setEmail(e.target.value)} placeholder='E-mail adresinizi giriniz.'/>
         </div>
-        <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">Şifre</label>
+        <div className="mb-3 login-password">
+          <label for="exampleInputPassword1" className="form-label login-label">Şifre</label>
           <input type="password" className="form-control" value={password} id="exampleInputPassword1" onChange={e => setPassword(e.target.value)} placeholder="Şifre giriniz."/>
         </div>
-        <button type="submit" disabled={!email || !password} className="btn btn-primary">Giriş yap</button>
+        <button type="submit" disabled={!email || !password} >Giriş Yap</button>
+        <p className='register-link'>Kayıt olmak için <Link to={"/register"}>tıklayınız.</Link></p>
       </form>
+      </center>
     </>
   )
 }

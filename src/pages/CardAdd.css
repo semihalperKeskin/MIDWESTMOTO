@@ -1,0 +1,59 @@
+.card-add{
+    text-align: start;
+}
+.card-add label{
+    margin-top: 25px;
+    margin-right: 55px;
+    display: inline-block;
+    width: 20%;
+    font-size: 25px;
+}
+.card-add .input{
+    width: 25rem;
+    margin-top: 25px;
+}
+.card-add .form-check{
+    display: inline-block;
+    padding-left: 0px;
+}
+.card-add .form-check label{
+    margin-left: 15px;
+
+}
+.card-add button{
+    display: inline-block;
+    background-color: transparent;
+    color : black;
+    font-size: 25px;
+    width: 5em;
+    border-radius: 15px; 
+    border: 1px solid orange;
+    margin-top: 35px;
+    position: absolute;
+    right: 47%;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+}
+.card-add button:hover{
+    border-radius: 35px;
+    border: 1px solid orange;
+}
+.card-add button::after{
+    content: "";
+    background: chartreuse;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+.card-add button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}

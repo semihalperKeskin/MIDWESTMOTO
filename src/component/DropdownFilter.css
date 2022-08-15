@@ -1,0 +1,11 @@
+.dropdown{
+    margin-top: 15px;
+    display: inline-flex;
+}
+.dropdown .btn {
+    width: 100%;
+    text-align: center;
+}
+.dropdown-menu .dropdown-item{
+    cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ContextItem } from '../context/ContextItem';
 import db from '../firebase'
+import "./CategoryFilter.css"
 
 function CategoryFilter() {
     const {setInfo} =useContext(ContextItem)
@@ -20,9 +21,11 @@ function CategoryFilter() {
         }))))
       }
   return (
-    <ul className='categoryList'>
+    <ul className='categoryList col-10'>
     <li><a onClick={()=> filterData("all")}> Tümü </a></li>
     <li><a onClick={()=> filterData("mont")}> Montlar </a></li>
+    <li><a onClick={()=> filterData("eldiven")}> Eldivenler </a></li>
+    <li><a onClick={()=> filterData("bot")}> Botlar </a></li>
   </ul>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ContextItem } from '../context/ContextItem'
 import db from '../firebase';
+import "./DropdownFilter.css"
 
 function DropdownFilter() {
 
@@ -24,9 +25,9 @@ function DropdownFilter() {
 
 
     return (
-        <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
+        <div className="dropdown col-2">
+            <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sıralama
             </button>
             <ul className="dropdown-menu">
             <li><a className="dropdown-item" onClick={()=> filterMap("")}>Önerilen</a></li>

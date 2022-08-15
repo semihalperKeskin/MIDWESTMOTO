@@ -1,0 +1,19 @@
+.categoryList{
+    display: inline-block;
+    list-style: none;
+    margin-top: 25px;
+}
+.categoryList li {
+    display: inline;
+    margin-right: 15px;
+    border: 1px solid #FFDBA4;
+    background-color: #FFDBA4;
+    border-radius: 5px 2px;
+    padding: 4px 8px;
+    font-size: 15px;
+}
+.categoryList li:hover {
+    border-radius: 15px 10px;
+    box-shadow: 1px 1px purple;
+    cursor: pointer;
+}

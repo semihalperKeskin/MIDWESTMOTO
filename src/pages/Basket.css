@@ -1,0 +1,35 @@
+.card {
+    margin-top: 15px;
+    display: inline-flex;
+    margin-left: 25px;
+}
+
+.btn-group {
+    display: inline;
+}
+
+.btn-decrease {
+    border-radius: 2px;
+}
+
+.btn-increase {
+    border-radius: 2px;
+}
+
+.card-body .btn-delete {
+    margin-left: 15px;
+}
+
+.total {
+    padding: 25px;
+    font-size: 20px;
+    font-weight: 400;
+    float: right;
+    clear: both;
+}
+.null-page{
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+    font-size: 20px;
+}

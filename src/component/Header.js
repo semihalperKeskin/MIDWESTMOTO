@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ContextItem } from '../context/ContextItem';
 import { loginOut } from '../firebase';
 import { logout as logoutHandle } from '../store/auth';
+import "./Header.css"
 
 
 function Header() {
@@ -21,30 +22,30 @@ function Header() {
 
 
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-expand-lg">
     <div className="container-fluid container">
-      Navbar
+    <p className='logo'>Midwest Moto</p>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul className="navbar-nav me-auto mb-1 mb-lg-0">
           <li className="nav-item">
-            <Link className="nav-link" to="/">Home</Link>
+            <Link className=" nav-p" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/cardekle">Kart ekle</Link>
+            <Link className=" nav-p" to="/cardekle">Kart ekle</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/sepetim">
-            sepetim
+            <Link className=" nav-p" to="/sepetim">
+            Sepetim
             </Link>
           </li>
         </ul>
-        {user && <li className="d-flex nav-item">Hoşgeldiniz</li > }
-        {user && <li className="d-flex nav-item"><button onClick={()=> handleLogout()}>Çıkış yap.</button></li>}
+        {user && <li className="d-flex nav-item nav-welcome">{user}</li > }
+        {user && <li className="d-flex nav-link btn-user" onClick={()=> handleLogout()}>Çıkış yap</li>}
           {!user && <li className="d-flex nav-item">
-          <Link className="nav-link" to="/login">Login</Link>
+          <Link className="nav-link btn-user " to="/login">Login</Link>
         </li> }
         {!user && <li className="d-flex nav-item">
-          <Link className="nav-link" to="/register">Register</Link>
+          <Link className="nav-link btn-user" to="/register">Register</Link>
         </li> }
       </div>
     </div>

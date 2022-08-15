@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ContextItem } from '../context/ContextItem';
 import db from '../firebase';
-import "./index.css"
+import "./Basket.css"
 
 
 
@@ -148,20 +148,21 @@ function Basket() {
             <div className="card-body">
               <h5 className="card-title">{item.data.name}</h5>
               <div className="btn-group" role="group" aria-label="Basic example">
-                <button type="button" onClick={() => decrease(item.data)} className="btn btn-quantity">-</button>
-                <button type="button" className="btn btn-light">
+                <button type="button" onClick={() => decrease(item.data)} className="btn btn-decrease btn-info">-</button>
+                <button type="button" className="btn btn-quantity">
                   {
                     item.data.quantity
                   }
                 </button>
-                <button type="button" onClick={() => increase(item.data)} className="btn btn-quantity">+</button>
-                <button onClick={()=> delItem(item.data)}>Delete</button>
-                <p>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
+                <button type="button" onClick={() => increase(item.data)} className="btn btn-increase  btn-success">+</button>
               </div>
+              <button type='button' className='btn btn-danger btn-delete' onClick={()=> delItem(item.data)}><i class="fa-solid fa-trash-can"></i></button>
+                <p>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
             </div>
           </div>
         ))}
-        <div>Toplam tutar : {totalPrice()} ₺</div>
+        <br />
+        <p className='total'>Toplam tutar : <strong>{totalPrice()} ₺</strong></p>
       </>
     )
 
@@ -174,7 +175,7 @@ function Basket() {
       {
 
         addItem != 0 ?
-          renderData() : <div>Henüz ürün eklenmedi.</div>
+          renderData() : <center className='null-page'>Henüz ürün eklemediniz.</center>
       }
     </>
   )

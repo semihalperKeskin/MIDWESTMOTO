@@ -1,13 +1,19 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+import AddBasket from '../component/AddBasket';
 import { ContextItem } from '../context/ContextItem';
+import db from '../firebase';
+import "./DetailPage.css"
 
 function DetailPage() {
+
   const { detailItem } = useContext(ContextItem);
   console.log("detailItem : ",detailItem)
+
+
   return (
     <>
-      <div className="card col-2">
-        <div id={`carouselExampleIndicators`} className="carousel slide" data-bs-ride="true">
+      <div className="detaildiv">
+        <div id="carouselExampleIndicators" className="carousel carousel-detail slide" data-bs-ride="true">
           <div className="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" ><img src={detailItem.image1} className="d-block w-100" alt="..." /></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" >
@@ -28,19 +34,24 @@ function DetailPage() {
               <img src={detailItem.image3} className="d-block w-100" alt="..." />
             </div>
           </div>
-          <button className="carousel-control-prev" type="button" data-bs-target={`#carouselExampleIndicators`} data-bs-slide="prev">
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
             <span className="visually-hidden">Previous</span>
           </button>
-          <button className="carousel-control-next" type="button" data-bs-target={`#carouselExampleIndicators`} data-bs-slide="next">
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
             <span className="#carousel-control-next-icon" aria-hidden="true"></span>
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-        <div className="card-body">
-          <h5 className="card-title">{detailItem.name}</h5>
+        <div className="product-detail">
+          <p><strong>{detailItem.name}</strong></p>
+          <p>Mevcut bedenler : {detailItem.size}</p>
+          <p>Fiyat : {detailItem.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
+          <AddBasket item={detailItem}/>
+          <p><u>Ürün Detayları </u><p >{detailItem.description}</p></p>
+          
         </div>
-      </div>
+        </div>
   </>
   )
 }
