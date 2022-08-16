@@ -3,7 +3,7 @@
 
 Live : MIDWEST MOTO
 
-<h3><u>Dipnote : The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</u></h3>
+<h3>**Dipnote : The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</h3>
 
 <ol><h3>-->Technologies</h3>
 <li> React</li>
@@ -13,7 +13,7 @@ Live : MIDWEST MOTO
 <li> React-router-dom</li>
 <li> React-hot-toast</li></ol>
 
-<h4><u>This app is developed with VSC</u></h4>
+<h4>- This app is developed with VSC</h4>
 
 <h3> if you want to clone repo you can write this in terminal</h3>
 
