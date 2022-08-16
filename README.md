@@ -8,10 +8,12 @@ Live : MIDWEST MOTO
 <ol><h3>-->Technologies</h3>
 <li> React</li>
 <li> Redux</li>
-<li> Firebase@8</li>
-<li> Bootstrap</li>
+<li> Firebase@8 -> Cloud Firestore / Storage / Authentication</li>
+<li> Bootstrap v5.2</li>
 <li> React-router-dom</li>
 <li> React-hot-toast</li></ol>
+
+<h4><u>This app is developed with VSC</u></h4>
 
 <h3> if you want to clone repo you can write this in terminal</h3>
 
