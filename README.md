@@ -1,7 +1,7 @@
 
 # MIDWEST MOTO 
 
-Live : MIDWEST MOTO
+Live : <a href="https://midwestmoto.netlify.app">MIDWEST MOTO</a>
 
 <h3>**Dipnote : The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</h3>
 
