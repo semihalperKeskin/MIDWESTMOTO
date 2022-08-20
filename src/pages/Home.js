@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ContextItem } from '../context/ContextItem';
-import db from '../firebase';
+import db, { DeleteCard } from '../firebase';
 import { Link } from "react-router-dom"
 import "./Home.css"
 import CategoryFilter from '../component/CategoryFilter';
@@ -80,6 +80,7 @@ function Home() {
                 <Link className="btn btn-detail" onClick={() => setDetailItem(item.data)} to={`/product/${item.data.id}`}>
                   Ürün detayları
                 </Link>
+                <button onClick={()=> DeleteCard(item.data)} ><i class="fa-solid fa-trash"></i></button>
                 <p className='text-muted'>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
               </div>
             </div>

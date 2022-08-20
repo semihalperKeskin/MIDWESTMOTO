@@ -46,5 +46,14 @@ export const loginOut = () => {
   });
 }
 
+export const DeleteCard = (item) => {
+  console.log("tem ism : ", item)
+  db.collection('products').where("name", "==", item.name).get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        doc.ref.delete();
+    });
+});
+}
+
 export default db;
 
