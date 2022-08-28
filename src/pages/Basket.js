@@ -119,7 +119,7 @@ function Basket() {
                   </button>
                   <button type="button" onClick={() => increase(item.data)} className="btn btn-increase  btn-success">+</button>
                 </div>
-                <button type='button' className='btn btn-danger btn-delete' onClick={() => delItem(item.data)}><i class="fa-solid fa-trash-can"></i></button>
+                <button type='button' className='btn btn-danger btn-delete' onClick={() => delItem(item.data)}><i className="fa-solid fa-trash-can"></i></button>
                 <p>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
               </div>
             </div>

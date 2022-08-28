@@ -32,6 +32,7 @@ export const loginUser = async (email, password) => {
 export const register = async (email, password) => {
   try {
     const { user } = await auth.createUserWithEmailAndPassword(email, password).then(res => toast.success("Kayıt işlemi başarılı."))
+    debugger
     return user;
   } catch (err) {
     toast.error(err.message)

@@ -9,6 +9,7 @@ import AddBasket from '../component/AddBasket';
 
 function Home() {
 
+
   const { info, setInfo, setDetailItem } = useContext(ContextItem);
   const [search, setSearch] = useState("")
 
@@ -30,12 +31,15 @@ function Home() {
   }, [search])
 
 
+ var userCheck = localStorage.getItem("user")
+
+
   return (
     <>
       <center>
         <form className='search-box'>
           <input onChange={(e) => setSearch(e.target.value)} type="search" placeholder="Ürün Ara" aria-label="Search" />
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </form>
       </center>
       <CategoryFilter />
@@ -80,7 +84,17 @@ function Home() {
                 <Link className="btn btn-detail" onClick={() => setDetailItem(item.data)} to={`/product/${item.data.id}`}>
                   Ürün detayları
                 </Link>
-                <button onClick={()=> DeleteCard(item.data)} ><i class="fa-solid fa-trash"></i></button>
+                {userCheck == '"mail@mail.com"' &&
+                <button className='deleteItem btn btn-danger'
+                onClick={() => {
+                 const confirmBox = window.confirm(
+                   "Ürünü tamamen silinecektir. Ürünü silmek istediğinize emin misiniz?"
+                 )
+                 if (confirmBox === true) {
+                   DeleteCard(item.data)
+                 }
+               }} ><i className="fa-solid fa-trash"></i></button>}
+                
                 <p className='text-muted'>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import AddBasket from '../component/AddBasket';
 import { ContextItem } from '../context/ContextItem';
+import { DeleteCard } from '../firebase';
 import "./DetailPage.css"
 
 function DetailPage() {
@@ -46,6 +47,15 @@ function DetailPage() {
           <p>Mevcut bedenler : {detailItem.size}</p>
           <p>Fiyat : {detailItem.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
           <AddBasket item={detailItem}/>
+          <button className='deleteItem btn btn-danger'
+                 onClick={() => {
+                  const confirmBox = window.confirm(
+                    "Ürünü tamamen silinecektir. Ürünü silmek istediğinize emin misiniz?"
+                  )
+                  if (confirmBox === true) {
+                    DeleteCard(detailItem)
+                  }
+                }} ><i className="fa-solid fa-trash"></i></button>
           <p style={{marginTop: "15px"}}><u>Ürün Detayları : </u><p style={{marginTop: "10px"}} >{detailItem.description}</p></p>
           
         </div>
