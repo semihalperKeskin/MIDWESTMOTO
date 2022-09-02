@@ -82,7 +82,8 @@ function Home() {
                 <h5 className="card-title">{item.data.name}</h5>
                 {userCheck === '"mail@mail.com"'  ? 
                 <div className="cardBtn">
-                <AddBasket cls="addbasket" item={item.data}/>
+                  <div className="addbasket">
+                <AddBasket item={item.data}/></div>
                 <button className='deleteItem btn btn-danger'
                 onClick={() => {
                  const confirmBox = window.confirm(
@@ -93,7 +94,7 @@ function Home() {
                  }
                }} ><i className="fa-solid fa-trash"></i></button>
                </div> : 
-               <AddBasket item={item.data}/>
+               <AddBasket cls={""} item={item.data}/>
                }
                 <Link className="btn btn-detail" onClick={() => setDetailItem(item.data)} to={`/product/${item.data.id}`}>
                   Ürün detayları

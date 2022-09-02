@@ -1,10 +1,12 @@
 .detaildiv{
+    background-color: white;
     margin-top: 25px;
     padding: 52px;
     border-radius: 15px;
-    border: 2px solid orangered;
+    border: 2px solid orange;
     position: relative;
     display: flex;
+    box-shadow: 1px 1px 2px orange, 0 0 25px orange;
 }
 .carousel-detail{
     width: 60%;
@@ -18,6 +20,9 @@
 .product-detail p {
     margin-bottom: 40px;
     font-size: 20px;
+}
+.product-detail p u {
+    font-weight: 500 ;
 }
 .add-basket{
     margin-bottom: 1000px;

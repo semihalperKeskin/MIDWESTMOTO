@@ -73,7 +73,8 @@ function Basket() {
   const renderData = () => {
     return (
       <>
-        <span>Ürünler sepete miktarına göre sıralanmıştır.</span>
+      <br />
+        <p>Ürünler miktarına göre sıralanmıştır.</p>
         <br />
         {
           addItem.map((item, i) => (

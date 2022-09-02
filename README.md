@@ -14,8 +14,8 @@ Live : <a href="https://midwestmoto.netlify.app">MIDWEST MOTO</a>
 <li> React-hot-toast</li></ol>
 
 <h4>- This app is developed with VSC</h4>
-
-<h3> if you want to clone repo you can write this in terminal</h3>
+<br>
+<h3> Installation</h3>
 
 ````
 git clone https://github.com/semihalperKeskin/MIDWESTMOTO.git
@@ -25,49 +25,10 @@ npm i react-router-dom
 npm i react-hot-toast
 ````
 
-## some project image
+<h3>Admin user</h3>
+<p>E-mail : mail@mail.com</p>
+<p>Password : 123456</p>
 
-
-- ### Home page and sortig options
-
-![](screenshot/sorting.jpg)
-
----
-
-- ### Product Detail page
-![](screenshot/detail-product.jpg)
-
----
-- ### Card add page
-
-#### firstly you choise image and then press upload button then you can write other detail your product
-![](screenshot/card-add.jpg)
-
----
-
-- ### Basket page
-#### if you add products in basket
-![](screenshot/basket-1.jpg)
-
-#### empty basket
-![](screenshot/basket-2.jpg)
-
----
-- ### Login and Register page
-#### Login
-![](screenshot/login.jpg)
-#### Register
-![](screenshot/register.jpg)
-
----
-
-- ### Toast error and success
-#### Error
-![](screenshot/register-toast.jpg)
-#### Success
-![](screenshot/register-toast-2.jpg)
-
----
-- ### Login with Home page
-![](screenshot/login-page.jpg)
-
+<h4>->Ability</h4>
+<li>Card add</li>
+<li>Card remove</li>
