@@ -80,11 +80,9 @@ function Home() {
               </div>
               <div className="card-body">
                 <h5 className="card-title">{item.data.name}</h5>
-                <AddBasket item={item.data} />
-                <Link className="btn btn-detail" onClick={() => setDetailItem(item.data)} to={`/product/${item.data.id}`}>
-                  Ürün detayları
-                </Link>
-                {userCheck == '"mail@mail.com"' &&
+                {userCheck === '"mail@mail.com"'  ? 
+                <div className="cardBtn">
+                <AddBasket cls="addbasket" item={item.data}/>
                 <button className='deleteItem btn btn-danger'
                 onClick={() => {
                  const confirmBox = window.confirm(
@@ -93,8 +91,13 @@ function Home() {
                  if (confirmBox === true) {
                    DeleteCard(item.data)
                  }
-               }} ><i className="fa-solid fa-trash"></i></button>}
-                
+               }} ><i className="fa-solid fa-trash"></i></button>
+               </div> : 
+               <AddBasket item={item.data}/>
+               }
+                <Link className="btn btn-detail" onClick={() => setDetailItem(item.data)} to={`/product/${item.data.id}`}>
+                  Ürün detayları
+                </Link>
                 <p className='text-muted'>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
               </div>
             </div>

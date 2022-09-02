@@ -6,7 +6,6 @@
     width: 18%;
 
 }
-
 .carousel-home {
     height: 250px;
 }
@@ -97,4 +96,16 @@
     position: absolute;
     margin-left: 15px;
     margin-top: 15px;
+}
+
+.card-body .cardBtn{
+    display: flex;
+    justify-content: space-between;
+}
+.card-body .addbasket{
+    width: 75%;
+}
+.card-body .addbasket:hover{
+    background-color: rgba(255, 145, 0, 0.822);
+    width: 75%;
 }

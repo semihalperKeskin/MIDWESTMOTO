@@ -20,6 +20,8 @@ function Header() {
     navigate("/login")
   }
 
+  var userCheck = localStorage.getItem("user")
+
 
   return (
     <nav className="navbar navbar-expand-lg">
@@ -30,9 +32,10 @@ function Header() {
             <li className="nav-item">
               <Link className=" nav-p" to="/">Home</Link>
             </li>
-            <li className="nav-item">
+            {userCheck === '"mail@mail.com"' && <li className="nav-item">
               <Link className=" nav-p" to="/cardekle">Kart ekle</Link>
-            </li>
+            </li>}
+            
             <li className="nav-item">
               <Link className=" nav-p" to="/sepetim">
                 Sepetim

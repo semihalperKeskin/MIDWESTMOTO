@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Header from './component/Header';
 import { Toaster } from 'react-hot-toast';
+import Error from './pages/Error';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
   const [loginControl, setLoginControl] = useState(false);
 
 
-
+  var userCheck = localStorage.getItem("user")
 
   const productItem = {
     ifAdd,
@@ -46,8 +47,9 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/product/:id' element={<DetailPage />} />
-          <Route path='/cardekle' element={<CardAdd />} />
+          {userCheck === '"mail@mail.com"' && <Route path='/cardekle' element={<CardAdd />} />}
           <Route path='/sepetim' element={<Basket />} />
+          <Route path='*' element={<Error/>}/>
         </Routes>
       </div>
     </ContextItem.Provider>
