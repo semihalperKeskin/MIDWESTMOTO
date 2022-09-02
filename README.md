@@ -1,11 +1,12 @@
 
-# MIDWEST MOTO 
+<h1> MIDWEST MOTO </h1>
 
-Live : <a href="https://midwestmoto.netlify.app">MIDWEST MOTO</a>
 
-<h3>**Dipnote : The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</h3>
+<h2>Project in Action: <a href="https://midwestmoto.netlify.app">MIDWEST MOTO</a></h3>
 
-<ol><h3>-->Technologies</h3>
+---
+
+<h3>-> Technologies</h3>
 <li> React</li>
 <li> Redux</li>
 <li> Firebase@8 -> Cloud Firestore / Storage / Authentication</li>
@@ -32,3 +33,5 @@ npm i react-hot-toast
 <h4>->Ability</h4>
 <li>Card add</li>
 <li>Card remove</li>
+
+<h3>**Dipnote : The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</h3>
