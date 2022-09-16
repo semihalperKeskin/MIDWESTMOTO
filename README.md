@@ -34,4 +34,4 @@ npm i react-hot-toast
 <li>Card add</li>
 <li>Card remove</li>
 
-<h3>**Dipnote : The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</h3>
+<h3>**The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</h3>
