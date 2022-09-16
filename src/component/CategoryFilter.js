@@ -21,7 +21,7 @@ function CategoryFilter() {
         }))))
       }
   return (
-    <ul className='categoryList col-10'>
+    <ul className='categoryList col-xxl-10 col-xl-10 col-lg-10 col-md-9'>
     <li><a onClick={()=> filterData("all")}> Tümü </a></li>
     <li><a onClick={()=> filterData("mont")}> Montlar </a></li>
     <li><a onClick={()=> filterData("eldiven")}> Eldivenler </a></li>

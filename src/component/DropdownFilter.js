@@ -25,7 +25,7 @@ function DropdownFilter() {
 
 
     return (
-        <div className="dropdown col-2">
+        <div className="dropdown col-xxl-1 me-xxl-1">
             <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sıralama
             </button>

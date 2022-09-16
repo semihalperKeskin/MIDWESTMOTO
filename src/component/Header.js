@@ -24,7 +24,7 @@ function Header() {
 
 
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand ">
       <div className="container-fluid container">
         <p className='logo'>Midwest Moto</p>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">

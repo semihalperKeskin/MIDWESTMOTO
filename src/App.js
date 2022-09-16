@@ -20,6 +20,7 @@ function App() {
   const [info, setInfo] = useState([]);
   const [detailItem, setDetailItem] = useState([]);
   const [loginControl, setLoginControl] = useState(false);
+  const [basketCount, setBasketCount] = useState(0);
 
 
   var userCheck = localStorage.getItem("user")
@@ -34,7 +35,9 @@ function App() {
     detailItem,
     setDetailItem,
     loginControl,
-    setLoginControl
+    setLoginControl,
+    basketCount, 
+    setBasketCount
 
   }
   return (
