@@ -4,12 +4,13 @@
 
 .navbar {
     height: 100px;
+    width: 100%;
     background-color: #222222;
 }
 .navbar .container-fluid p{
     font-family: 'Michroma', sans-serif;
     padding-top: 15px;
-    color: #E0A800;
+    color: #FF9642;
 }
 
 .d-flex {
@@ -20,19 +21,24 @@
     font-size: 20px;
     margin-right: 15px;
     text-decoration: none;
-    color: #E0A800;
+    color: #FF9642;
 }
 .nav-p:hover{
     color: #FFDBA4;
 }
-.logo{
-    font-size: 20px;
-}
+.logo {
+    text-decoration: none;
+    color: #FF9642;
 
+}
+.logo:hover{
+    color: #FFDBA4;
+
+}
 .btn-user {
     border: 1px solid transparent;
     padding: 6px 15px; 
-    background-color: #E0A800;
+    background-color: #FF9642;
     border-radius: 7px;
     color: rgb(255, 255, 255);
     cursor: pointer;

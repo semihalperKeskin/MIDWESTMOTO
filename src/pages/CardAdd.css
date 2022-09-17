@@ -1,15 +1,8 @@
-.card-add-div{
-    left: 0;
-}
-.card-add{
+/* .card-add{
     text-align: start;
-    margin-top: 0;
 }
 .card-add label{
-    margin-top: 25px;
-    margin-right: 55px;
     display: inline-block;
-    width: 20%;
     font-size: 25px;
 }
 .card-add .input{
@@ -23,7 +16,7 @@
 .card-add .form-check label{
     margin-left: 15px;
 
-}
+}*/
 .card-add button{
     display: inline-block;
     background-color: transparent;
@@ -32,17 +25,16 @@
     width: 5em;
     border-radius: 15px; 
     border: 1px solid orange;
-    margin-top: 35px;
     position: absolute;
     right: 47%;
     transition-duration: 0.4s;
     text-decoration: none;
     overflow: hidden;
-}
+}/*
 .card-add button:hover{
     border-radius: 35px;
     border: 1px solid orange;
-}
+}*/
 .card-add button::after{
     content: "";
     background: chartreuse;
@@ -54,7 +46,7 @@
     margin-top: -120%;
     opacity: 0;
     transition: all 0.8s
-}
+}/*
 .card-add button:active:after {
     padding: 0;
     margin: 0;
@@ -70,15 +62,8 @@
     width: 100%;
     border-radius: 15px;
     padding: 100px;
-}
-.uploadForm label{
-    margin-right: 55px;
-    display: inline-block;
-    width: 20%;
-    font-size: 25px;
-    margin-top: 15px;
+}*/
 
-}
 .uploadForm .inputUpload{
     width: 25rem;
     margin-top: 10px;
@@ -90,4 +75,4 @@
     border-color: orange;
     width: 80px;
     height: 35px;
-}
+} 

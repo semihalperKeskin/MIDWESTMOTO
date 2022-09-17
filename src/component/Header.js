@@ -24,33 +24,33 @@ function Header() {
 
 
   return (
-    <nav className="navbar navbar-expand ">
-      <div className="container-fluid container">
-        <p className='logo'>Midwest Moto</p>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-1 mb-lg-0">
-            <li className="nav-item">
-              <Link className=" nav-p" to="/">Home</Link>
-            </li>
-            {userCheck === '"mail@mail.com"' && <li className="nav-item">
-              <Link className=" nav-p" to="/cardekle">Kart ekle</Link>
-            </li>}
-            
-            <li className="nav-item">
-              <Link className=" nav-p" to="/sepetim">
-                Sepetim
-              </Link>
-            </li>
-          </ul>
-          {user && <li className="d-flex nav-item nav-welcome">{user}</li >}
-          {user && <li className="d-flex nav-link btn-user" onClick={() => handleLogout()}>Çıkış yap</li>}
-          {!user && <li className="d-flex nav-item">
-            <Link className="nav-link btn-user " to="/login">Login</Link>
+    <nav className="navbar navbar-expand">
+      <div className="container">
+        <ul className="navbar-nav col-xxl-10 col-xl-10 col-lg-10 col-md-8 col-sm-8">
+          <li className='px-3 fs-5 col-xxl-11 col-xl-11 col-lg-11 col-md-11 col-sm-9'>
+            <Link className='logo' to={"/"}>Midwest Moto</Link>
+          </li>
+          {userCheck === '"mail@mail.com"' && <li className="nav-item">
+            <Link className=" nav-p " to="/cardekle">
+              <i class="fa-solid fa-circle-plus"></i>
+            </Link>
           </li>}
-          {!user && <li className="d-flex nav-item">
-            <Link className="nav-link btn-user" to="/register">Register</Link>
-          </li>}
-        </div>
+          <li className="nav-item ">
+            <Link className=" nav-p" to="/sepetim">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </Link>
+          </li>
+        </ul>
+        {user && <ul className='navbar-nav col-xxl-2 col-md-3 col-sm-4'><li className="d-flex nav-item nav-welcome ">{user}</li>
+          <li className="d-flex btn btn-danger px-4 py-1" onClick={() => handleLogout()}><i class="fa-solid fa-right-from-bracket "></i></li>
+        </ul>}
+        {!user && <ul><li className="d-flex nav-item">
+          <Link className="nav-link btn-user  px-3 py-2 " to="/login">Login</Link>
+        </li>
+          <li className="d-flex nav-item">
+            <Link className="nav-link btn-user px-3 py-2" to="/register">Register</Link>
+          </li>
+        </ul>}
       </div>
     </nav>
   )
