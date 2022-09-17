@@ -44,7 +44,7 @@ function Header() {
         {user && <ul className='navbar-nav col-xxl-2 col-md-3 col-sm-4'><li className="d-flex nav-item nav-welcome ">{user}</li>
           <li className="d-flex btn btn-danger px-4 py-1" onClick={() => handleLogout()}><i class="fa-solid fa-right-from-bracket "></i></li>
         </ul>}
-        {!user && <ul><li className="d-flex nav-item">
+        {!user && <ul className='navbar-nav col-xxl-2 col-md-3 col-sm-4'><li className="d-flex nav-item">
           <Link className="nav-link btn-user  px-3 py-2 " to="/login">Login</Link>
         </li>
           <li className="d-flex nav-item">
