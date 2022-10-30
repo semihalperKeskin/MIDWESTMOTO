@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import db, { storage, storageRef } from '../firebase';
+import db, { storage } from '../firebase';
 import toast from "react-hot-toast"
 import "./CardAdd.css"
 

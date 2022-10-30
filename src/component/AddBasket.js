@@ -1,12 +1,8 @@
 import React from 'react'
-import { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { ContextItem } from '../context/ContextItem';
 import db from '../firebase';
 
-function AddBasket(item, cls) {
-
-    const {basketCount ,setBasketCount} = useContext(ContextItem)
+function AddBasket(item) {
 
     const findId = (items) => {
         toast.success("Sepete ürün eklendi.")

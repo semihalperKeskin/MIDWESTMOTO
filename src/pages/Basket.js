@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ContextItem } from '../context/ContextItem';
 import db from '../firebase';
 import "./Basket.css"

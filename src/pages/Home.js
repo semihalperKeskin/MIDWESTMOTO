@@ -47,7 +47,6 @@ function Home() {
       <DropdownFilter />
       {
         info.map((item, i) => (
-          <>
             <div className="card col-xxl-2 col-xl-2 col-lg-2 col-md-5 col-sm-5 col-xs-" key={i}>
               <div id={`carouselExampleIndicators${i}`} className="carousel carousel-home slide" data-bs-ride="true">
                 <div className="carousel-indicators">
@@ -103,7 +102,6 @@ function Home() {
                 <p className='text-muted'>Fiyat : {item.data.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
               </div>
             </div>
-          </>
         ))
       }
     </>
