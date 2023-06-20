@@ -1,12 +1,17 @@
 import React, { useContext } from 'react'
-import AddBasket from '../component/AddBasket';
 import { ContextItem } from '../context/ContextItem';
+import { useDispatch } from 'react-redux';
+import { addCard } from '../store/cardReducers';
 import "./DetailPage.css"
 
 function DetailPage() {
 
+  const dispatch = useDispatch();
   const { detailItem } = useContext(ContextItem);
 
+  const handleCard = (detailItem) => {
+    dispatch(addCard(detailItem));
+  }
 
   return (
     <>
@@ -46,7 +51,7 @@ function DetailPage() {
           <p><strong>{detailItem.name}</strong></p>
           <p>Mevcut bedenler : {detailItem.size}</p>
           <p>Fiyat : {detailItem.price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} ₺</p>
-          <AddBasket item={detailItem} />
+          <button onClick={()=> handleCard(detailItem)}>Sepete Ekle</button>
           <p style={{ marginTop: "15px" }}><u>Ürün Detayları : </u><p style={{ marginTop: "10px" }} >{detailItem.description}</p></p>
 
         </div>

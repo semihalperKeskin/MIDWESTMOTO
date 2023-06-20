@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import auth from "./auth";
+import cardReducers from "./cardReducers";
 
 const store = configureStore({
     reducer: {
-        auth
+        auth,
+        cardReducers,
     }
 })
 

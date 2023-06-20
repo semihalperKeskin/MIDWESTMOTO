@@ -14,30 +14,17 @@ import Error from './pages/Error';
 
 function App() {
 
-
-  const [addItem, setAddItem] = useState([]);
-  const [ifAdd, setIfAdd] = useState(false);
   const [info, setInfo] = useState([]);
   const [detailItem, setDetailItem] = useState([]);
-  const [loginControl, setLoginControl] = useState(false);
-  const [basketCount, setBasketCount] = useState(0);
 
 
   var userCheck = localStorage.getItem("user")
 
   const productItem = {
-    ifAdd,
-    setIfAdd,
-    addItem,
-    setAddItem,
     info,
     setInfo,
     detailItem,
     setDetailItem,
-    loginControl,
-    setLoginControl,
-    basketCount, 
-    setBasketCount
 
   }
   return (
