@@ -4,7 +4,7 @@ import toast from "react-hot-toast"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBGJ5L6VXnzucBDqERu5ZZkzpFD4nK7ODI",
+  apiKey: "AIzaSyD_f100CLyqxzoZfENSNAO2NMerj3TpXsQ",
   authDomain: "reactproject-9d2b6.firebaseapp.com",
   projectId: "reactproject-9d2b6",
   storageBucket: "reactproject-9d2b6.appspot.com",
