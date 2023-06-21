@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ContextItem } from "../context/ContextItem";
-import db from "../firebase";
+import {db} from "../firebase";
+import { collection, query, onSnapshot, orderBy, startAt, endAt } from 'firebase/firestore';
 import { Link } from "react-router-dom";
 import "./Home.css";
 import CategoryFilter from "../component/CategoryFilter";
@@ -18,38 +19,49 @@ function Home() {
   const { info, setInfo, setDetailItem } = useContext(ContextItem);
   const [search, setSearch] = useState("");
 
-  const fetchData = db.collection("products");
-
+  
   useEffect(() => {
+
+    const productsCollection = collection(db, "products");
+
+    let unsubscribe;
+
     if (search.length === 0) {
-      fetchData.onSnapshot((snapShot) =>
-        setInfo(
-          snapShot.docs.map((doc) => ({
+      unsubscribe = onSnapshot(productsCollection, (snapshot) => {
+        setInfo(snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: {
+            ...doc.data(),
             id: doc.id,
-            data: {
-              ...doc.data(),
-              id: doc.id,
-            },
-          }))
-        )
-      );
+          },
+        })));
+      });
     } else if (search.length > 0) {
-      fetchData
-        .where("nameToUpper", ">=", search.toUpperCase())
-        .where("nameToUpper", "<=", search.toUpperCase() + "\uf8ff")
-        .onSnapshot((snapShot) =>
-          setInfo(
-            snapShot.docs.map((doc) => ({
-              id: doc.id,
-              data: {
-                ...doc.data(),
-                id: doc.id,
-              },
-            }))
-          )
-        );
+      const q = query(
+        productsCollection,
+        orderBy('nameToUpper'),
+        startAt(search.toUpperCase()),
+        endAt(search.toUpperCase() + '\uf8ff')
+      );
+
+      unsubscribe = onSnapshot(q, (snapshot) => {
+        setInfo(snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: {
+            ...doc.data(),
+            id: doc.id,
+          },
+        })));
+      });
     }
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, [search]);
+
 
   const userCheck = localStorage.getItem("user");
 

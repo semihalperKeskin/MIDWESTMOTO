@@ -1,148 +1,136 @@
-import React, { useState } from 'react'
-import db, { storage } from '../firebase';
-import toast from "react-hot-toast"
-import "./CardAdd.css"
+import React, { useState } from 'react';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import toast from "react-hot-toast";
+import "./CardAdd.css";
+import { db, storage } from '../firebase'; // Import from where you have initialized firebase
 
 function CardAdd() {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(null);
-  const [size, setSize] = useState("");
-  const [category, setCategory] = useState("");
-  const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
-  const [image3, setImage3] = useState(null);
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState(null);
+    const [size, setSize] = useState("");
+    const [category, setCategory] = useState("");
+    const [image1, setImage1] = useState(null);
+    const [image2, setImage2] = useState(null);
+    const [image3, setImage3] = useState(null);
 
-  const [image1Url, setImage1Url] = useState(null);
-  const [image2Url, setImage2Url] = useState(null);
-  const [image3Url, setImage3Url] = useState(null);
-  const [description, setDescription] = useState("");
+    const [image1Url, setImage1Url] = useState(null);
+    const [image2Url, setImage2Url] = useState(null);
+    const [image3Url, setImage3Url] = useState(null);
+    const [description, setDescription] = useState("");
 
-  const quantity = 0;
+    const quantity = 0;
 
+    const onChangeValue = (e) => {
+        setCategory(e.target.value);
+    };
 
-  const onChangeValue = (e) => {
-    setCategory(e.target.value)
-  }
+    const imageUpload = () => {
+        const storageRef = ref(storage, `images/${image1.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, image1);
 
-  const imageUpload = () => {
-    const uploadTask = storage.ref(`images/${image1.name}`).put(image1);
-    uploadTask.on(
-      "state_changed",
-      snapshot => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                const progress = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+            },
+            error => {
+                toast.error(error.message);
+            },
+            () => {
+                getDownloadURL(storageRef).then(url => {
+                    setImage1Url(url);
+                    toast.success("Resim 1 eklendi.");
+                });
+            }
         );
+    };
 
-      },
-      error => {
-        toast.error(error.message)
-      },
-      () => {
-        storage
-          .ref("images")
-          .child(image1.name)
-          .getDownloadURL()
-          .then(url => {
-            setImage1Url(url);
-            toast.success("Resim 1 eklendi.")
-          });
-      }
-    );
-  }
+    const image2Upload = () => {
+      const storageRef = ref(storage, `images/${image2.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, image2);
 
+      uploadTask.on(
+          "state_changed",
+          snapshot => {
+              const progress = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              );
+          },
+          error => {
+              toast.error(error.message);
+          },
+          () => {
+              getDownloadURL(storageRef).then(url => {
+                setImage2Url(url);
+                  toast.success("Resim 2 eklendi.");
+              });
+          }
+      );
+  };
 
-  const image2Upload = () => {
-    const uploadTask = storage.ref(`images/${image2.name}`).put(image2);
-    uploadTask.on(
-      "state_changed",
-      snapshot => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-      },
-      error => {
-        toast.error(error.message)
-      },
-      () => {
-        storage
-          .ref("images")
-          .child(image2.name)
-          .getDownloadURL()
-          .then(url => {
-            setImage2Url(url);
-            toast.success("Resim 2 eklendi.")
-          });
-      }
-    );
-  }
   const image3Upload = () => {
-    const uploadTask = storage.ref(`images/${image3.name}`).put(image3);
+    const storageRef = ref(storage, `images/${image3.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, image3);
+
     uploadTask.on(
-      "state_changed",
-      snapshot => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-      },
-      error => {
-        toast.error(error.message)
-      },
-      () => {
-        storage
-          .ref("images")
-          .child(image3.name)
-          .getDownloadURL()
-          .then(url => {
-            setImage3Url(url);
-            toast.success("Resim 3 eklendi.")
-          });
-      }
+        "state_changed",
+        snapshot => {
+            const progress = Math.round(
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+        },
+        error => {
+            toast.error(error.message);
+        },
+        () => {
+            getDownloadURL(storageRef).then(url => {
+              setImage3Url(url);
+                toast.success("Resim 3 eklendi.");
+            });
+        }
     );
-  }
+};
 
-  const sub = (e) => {
-    e.preventDefault();
-    console.log(`name ${name} kategory ${category} price ${price}
-    size ${size} image1 ${image1Url} image2 ${image2Url} image3 ${image3Url}
-    description ${description} quantity ${quantity}`)
+    const sub = async (e) => {
+        e.preventDefault();
 
-    if (!category || !name || !price || !size || !image1Url || !image2Url || !image3Url
-      || !description) {
-      toast.error("Hiçbir alan boş bırakılmamalıdır.")
-    }
-    else {
-      // Add data to the store
-      db.collection("products").add({
-        category: category,
-        name: name,
-        nameToUpper: name.toUpperCase(),
-        price: price,
-        size: size,
-        image1: image1Url,
-        image2: image2Url,
-        image3: image3Url,
-        description: description,
-        quantity: quantity
+        if (!category || !name || !price || !size || !image1Url || !image2Url || !image3Url || !description) {
+            toast.error("Hiçbir alan boş bırakılmamalıdır.");
+        } else {
+            try {
+                await addDoc(collection(db, "products"), {
+                    category: category,
+                    name: name,
+                    nameToUpper: name.toUpperCase(),
+                    price: price,
+                    size: size,
+                    image1: image1Url,
+                    image2: image2Url,
+                    image3: image3Url,
+                    description: description,
+                    quantity: quantity
+                });
 
-      })
-        .then((doc) => {
-          toast.success("Ürün başarıyla eklendi.")
+                toast.success("Ürün başarıyla eklendi.");
+            } catch (error) {
+                toast.error(error.message);
+            }
 
-        })
-        .catch((error) => {
-          toast.error(error.message)
-        });
+            setName("");
+            setPrice("");
+            setSize("");
+            setImage1(null);
+            setImage2(null);
+            setImage3(null);
+            setDescription("");
+        }
 
-      setName("")
-      setPrice("")
-      setSize("")
-      setImage1(null)
-      setImage2(null)
-      setImage3(null)
-      setDescription("")
-    }
-  }
-  return (
+    };
+
+      return (
     <div>
       <div className='card-add-div container mt-5'>
         <p className='text-danger fs-15'>* ilk olarak seçtiğiniz fotoğrafları upload butonuna basarak upload etmelisiniz.</p>
@@ -215,4 +203,5 @@ function CardAdd() {
     </div>
   )
 }
-export default CardAdd
+
+export default CardAdd;
