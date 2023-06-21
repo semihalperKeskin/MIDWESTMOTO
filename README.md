@@ -8,7 +8,7 @@
 <h3>-> Technologies</h3>
 <li> React</li>
 <li> Redux</li>
-<li> Firebase@8 -> Cloud Firestore / Storage / Authentication</li>
+<li> Firebase</li>
 <li> Bootstrap v5.2</li>
 <li> React-router-dom</li>
 <li> React-hot-toast</li></ol>
