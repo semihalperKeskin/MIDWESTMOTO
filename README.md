@@ -1,7 +1,6 @@
 
 <h1> MIDWEST MOTO </h1>
 
-
 <h2>Project in Action: <a href="https://midwestmoto.netlify.app">MIDWEST MOTO</a></h3>
 
 ---
@@ -20,10 +19,10 @@
 
 ````
 git clone https://github.com/semihalperKeskin/MIDWESTMOTO.git
-npm i
-npm i firebase@8
-npm i react-router-dom
-npm i react-hot-toast
+npm install
+npm install firebase
+npm install react-router-dom
+npm install react-hot-toast
 ````
 
 <h3>Admin user</h3>
