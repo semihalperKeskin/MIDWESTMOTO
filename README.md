@@ -30,7 +30,9 @@ npm install react-hot-toast
 <p>Password : 123456</p>
 
 <h4>->Ability</h4>
+<li>Filter Card</li>
 <li>Card add</li>
-<li>Card remove</li>
+<li>Searching</li>
+<li>Login/Register</li>
 
 <h3>**The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</h3>
