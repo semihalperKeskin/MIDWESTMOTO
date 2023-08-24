@@ -1,37 +1,34 @@
+# MIDWEST MOTO
 
-<h1> MIDWEST MOTO </h1>
+## Project in Action: [MIDWEST MOTO](https://midwestmoto.netlify.app)
 
-
-<h2>Project in Action: <a href="https://midwestmoto.netlify.app">MIDWEST MOTO</a></h3>
+This project has evolved over time, embracing the latest technologies. In its initial version, it utilized Firebase v8 and Bootstrap. The latest update, however, has seen a significant transformation. We've upgraded to Firebase v9 and enriched the design by incorporating Tailwind and Flowbite. Our commitment to quality is reflected in the responsive design that now ensures an optimal user experience across all devices.
 
 ---
 
-<h3>-> Technologies</h3>
-<li> React</li>
-<li> Redux</li>
-<li> Firebase@8 -> Cloud Firestore / Storage / Authentication</li>
-<li> Bootstrap v5.2</li>
-<li> React-router-dom</li>
-<li> React-hot-toast</li></ol>
+### Technologies
+- React
+- Redux
+- Firebase v9.22.2
+- TailwindCss
+- Flowbite
+- React-router-dom
+- React-hot-toast
 
-<h4>- This app is developed with VSC</h4>
-<br>
-<h3> Installation</h3>
+### Installation
 
-````
+```bash
 git clone https://github.com/semihalperKeskin/MIDWESTMOTO.git
 npm i
-npm i firebase@8
+npm i firebase@9
+npm i -D tailwindcss
+npm i flowbite
 npm i react-router-dom
 npm i react-hot-toast
-````
+```
 
-<h3>Admin user</h3>
-<p>E-mail : mail@mail.com</p>
-<p>Password : 123456</p>
+### Admin user
 
-<h4>->Ability</h4>
-<li>Card add</li>
-<li>Card remove</li>
-
-<h3>**The site is designed as 1920x1080. There may be deterioration in other screen resolutions.</h3>
+```bash
+E-mail: mail@mail.com
+Password: 123456
